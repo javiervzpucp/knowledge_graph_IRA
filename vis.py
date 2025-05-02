@@ -24,7 +24,7 @@ print("🔹 Tipos de relaciones:")
 print(Counter(edge_types))
 
 # === Paso 3: Seleccionar un subgrafo ===
-top_nodes = sorted(G.degree, key=lambda x: x[1], reverse=True)[:100]
+top_nodes = sorted(G.degree, key=lambda x: x[1], reverse=True)[:200]
 selected_nodes = [n for n, _ in top_nodes]
 subG = G.subgraph(selected_nodes)
 
@@ -46,4 +46,8 @@ nx.draw_networkx_labels(subG, pos, labels=labels, font_size=8)
 plt.title("Subgrafo UNESCO: top 20 nodos más conectados", fontsize=14)
 plt.axis('off')
 plt.tight_layout()
+
+# === Guardar como imagen PNG ===
+plt.savefig("unesco_subgraph.png", dpi=300)
+print("✅ Imagen guardada como 'unesco_subgraph.png'")
 plt.show()
